@@ -4,6 +4,10 @@ This code is a boilerplate code using kotlin langauge with various libraries lik
 
 ## Getting Started
 
+### Splash Screen
+
+- Splash screen is basically added using drawable xml without any layout.
+
 
 ### Session Manager
 
