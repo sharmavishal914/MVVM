@@ -4,14 +4,18 @@ This code is a boilerplate code using kotlin langauge with various libraries lik
 
 ## Getting Started
 
+### Splash Screen
+
+- Splash screen is basically added using drawable xml without any layout.
+
 
 ### Session Manager
 
-- Check LoginActivity for handling sharedprefrence 
+- Check session manager class for all shared prefrence code
 
 ### Api call using Retrofit
 
-- Check Home screen activity for api call
+- Check loginactivity for api call
 - Api call is only using get method for now 
 
 
