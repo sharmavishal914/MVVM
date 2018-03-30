@@ -60,5 +60,6 @@ dependencies {
     // view model
     implementation "android.arch.lifecycle:extensions:$LIFECYCLE_VERSION"
     annotationProcessor "android.arch.lifecycle:compiler:$LIFECYCLE_VERSION"
+    androidTestImplementation 'junit:junit:4.12'
 }
 
