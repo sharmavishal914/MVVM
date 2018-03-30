@@ -1,0 +1,64 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.vishal.kotlinmvvm"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true //important
+    }
+    kapt {
+        generateStubs = true
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //App compat
+    implementation "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
+    implementation "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
+
+    //Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$KOTLIN_VERSION"
+
+    //Constraint Layout
+    implementation "com.android.support.constraint:constraint-layout:$CONSTRAINT_LAYOUT_VERSION"
+
+    //Dagger
+    kapt "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+    kapt "com.google.dagger:dagger-android-processor:$DAGGER_VERSION"
+    implementation "com.google.dagger:dagger:$DAGGER_VERSION"
+    implementation "com.google.dagger:dagger-android:$DAGGER_VERSION"
+    implementation "com.google.dagger:dagger-android-support:$DAGGER_VERSION"
+
+    //RX java
+    implementation "io.reactivex.rxjava2:rxandroid:$RXANDROID_VERSION"
+    implementation "io.reactivex.rxjava2:rxjava:$RXJAVA_VERSION"
+
+    //Retrofit
+    implementation "com.google.code.gson:gson:$GSON_VERSION"
+    implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION"
+    implementation "com.squareup.okhttp3:logging-interceptor:$OKHTTPINTERCEPTER_VERSION"
+
+    // view model
+    implementation "android.arch.lifecycle:extensions:$LIFECYCLE_VERSION"
+    annotationProcessor "android.arch.lifecycle:compiler:$LIFECYCLE_VERSION"
+}
+
