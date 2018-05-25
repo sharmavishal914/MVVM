@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Kotlin_MVVM.iml" filepath="$PROJECT_DIR$/Kotlin_MVVM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MVVM.iml" filepath="$PROJECT_DIR$/MVVM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

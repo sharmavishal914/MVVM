@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.vishal.kotlinmvvm.ui.login.LoginActivity" />
+        <activity android:name="com.vishal.kotlinmvvm.ui.home.HomeActivity" />
 
     </application>
 

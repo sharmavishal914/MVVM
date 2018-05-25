@@ -41,6 +41,7 @@ dependencies {
     implementation "com.android.support.constraint:constraint-layout:$CONSTRAINT_LAYOUT_VERSION"
 
     //Dagger
+    implementation 'com.android.support:support-v4:26.1.0'
     kapt "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
     kapt "com.google.dagger:dagger-android-processor:$DAGGER_VERSION"
     implementation "com.google.dagger:dagger:$DAGGER_VERSION"
@@ -62,4 +63,3 @@ dependencies {
     annotationProcessor "android.arch.lifecycle:compiler:$LIFECYCLE_VERSION"
     androidTestImplementation 'junit:junit:4.12'
 }
-
