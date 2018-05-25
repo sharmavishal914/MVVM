@@ -18,6 +18,9 @@ This code is a boilerplate code using kotlin langauge with various libraries lik
 - Check loginactivity for api call
 - Api call is only using get method for now 
 
+### Home Fragment Screen
+
+- Home Fragment Screen is an example to add a fragment in mvvm with dagger
 
 
 
