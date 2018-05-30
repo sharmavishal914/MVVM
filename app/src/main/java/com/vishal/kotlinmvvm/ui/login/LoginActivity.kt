@@ -21,7 +21,7 @@ class LoginActivity : BaseActivity(), LoginNavigator, View.OnClickListener {
         setContentView(R.layout.activity_login)
         mLoginViewModel.mNavigator = this
 
-        callApi()
+//        callApi()
     }
 
     private fun callApi() {

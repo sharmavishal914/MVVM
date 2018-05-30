@@ -2,6 +2,8 @@ package com.vishal.kotlinmvvm.di.builder
 
 import com.vishal.chat.ui.home.home.HomeFragment
 import com.vishal.chat.ui.home.home.HomeFragmentModule
+import com.vishal.kotlinmvvm.testing.TestActivity
+import com.vishal.kotlinmvvm.testing.TestActivityModule
 import com.vishal.kotlinmvvm.ui.home.HomeActivity
 import com.vishal.kotlinmvvm.ui.home.HomeActivityModule
 import com.vishal.kotlinmvvm.ui.login.LoginActivity
@@ -27,5 +29,8 @@ abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = arrayOf(HomeFragmentModule::class))
     internal abstract fun bindHomeFragment(): HomeFragment
+
+    @ContributesAndroidInjector(modules = arrayOf(TestActivityModule::class))
+    internal abstract fun bindTestActivity(): TestActivity
 
 }

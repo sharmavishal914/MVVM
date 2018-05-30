@@ -9,7 +9,7 @@ import dagger.Provides
 class HomeFragmentModule {
 
     @Provides
-    fun provideChatViewModel(sessionManager: SessionManager, requestInterface: RequestInterface): HomeFragmentViewModel {
+    fun provideHomeViewModel(sessionManager: SessionManager, requestInterface: RequestInterface): HomeFragmentViewModel {
         return HomeFragmentViewModel(sessionManager, requestInterface)
     }
 }

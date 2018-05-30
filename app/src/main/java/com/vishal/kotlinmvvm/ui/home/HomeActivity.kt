@@ -19,8 +19,11 @@ class HomeActivity : BaseActivity(), HomeNavigator {
         setContentView(R.layout.activity_home)
         mHomeViewModel.mNavigator = this
 
-        callApi()
-        homeFragement()
+//        callApi()
+
+        if (savedInstanceState == null) {
+            homeFragement()
+        }
     }
 
     private fun homeFragement() {

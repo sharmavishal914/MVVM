@@ -1,14 +1,21 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_gravity="center"
-        android:gravity="center"
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:text="@string/hello_blank_fragment" />
+
+
+    <Button
+        android:id="@+id/button_click"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 
 </android.support.design.widget.CoordinatorLayout>

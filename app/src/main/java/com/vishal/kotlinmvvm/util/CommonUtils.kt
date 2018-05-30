@@ -4,6 +4,8 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import com.vishal.kotlinmvvm.R
 
 /**
@@ -21,4 +23,18 @@ fun showLoadingDialog(context: Context): ProgressDialog {
     progressDialog.setCancelable(false)
     progressDialog.setCanceledOnTouchOutside(false)
     return progressDialog
+}
+
+fun isNetworkConnected(context: Context): Boolean {
+    val connectivity = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    if (connectivity != null) {
+        val info = connectivity.allNetworkInfo
+        if (info != null)
+            for (i in info.indices)
+                if (info[i].state == NetworkInfo.State.CONNECTED) {
+                    return true
+                }
+
+    }
+    return false
 }
