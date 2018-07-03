@@ -1,43 +1,49 @@
 package com.vishal.kotlinmvvm.ui.login
 
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
+import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.vishal.kotlinmvvm.R
-import com.vishal.kotlinmvvm.data.model.Model
+import com.vishal.kotlinmvvm.databinding.ActivityLoginBinding
 import com.vishal.kotlinmvvm.ui.home.HomeActivity
-import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
 
-class LoginActivity : BaseActivity(), LoginNavigator, View.OnClickListener {
-
+class LoginActivity : BaseActivity(), View.OnClickListener {
 
     @Inject
-    lateinit var mLoginViewModel: LoginViewModel
+    lateinit var loginViewModelFactory: LoginViewModelFactory
+    lateinit var loginViewModel: LoginViewModel
+    lateinit var activityLoginBinding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-        mLoginViewModel.mNavigator = this
 
-//        callApi()
+        initialise()
+    }
+
+    private fun initialise() {
+        loginViewModel = ViewModelProviders.of(this, loginViewModelFactory).get(LoginViewModel::class.java!!)
+        // Binding UI
+        activityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        activityLoginBinding.loginViewModel = loginViewModel
+        activityLoginBinding.setLifecycleOwner(this)
+
+        initialiseToolBar("Login", false)
     }
 
     private fun callApi() {
         showLoading()
-        mLoginViewModel.callApi()
+        loginViewModel.callApi()
     }
 
-    override fun openHomeScreen(model: Model) {
-        hideLoading()
-        showSnackBar(constraint_root, model.ip)
-    }
+
 
     override fun onClick(p: View?) {
         when (p!!.id) {
-            R.id.button_login -> {
-                startActivity(Intent(applicationContext, HomeActivity::class.java))
+            R.id.btn_login -> {
+                print(loginViewModel.email)
             }
         }
     }

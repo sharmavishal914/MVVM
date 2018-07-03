@@ -3,6 +3,7 @@ package com.vishal.kotlinmvvm.ui.splash
 import android.os.Bundle
 import com.vishal.kotlinmvvm.ui.login.BaseActivity
 import android.content.Intent
+import android.os.Handler
 import com.vishal.kotlinmvvm.ui.login.LoginActivity
 
 
@@ -14,7 +15,9 @@ class SplashActivity : BaseActivity() {
     }
 
     private fun nextScreen() {
-        startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
-        finish()
+        Handler().postDelayed({
+            startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+            finish()
+        }, 2000)
     }
 }

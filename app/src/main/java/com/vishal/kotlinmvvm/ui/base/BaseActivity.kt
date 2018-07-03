@@ -4,13 +4,18 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.AppCompatActivity
+import android.view.Gravity
 import android.view.View
 import android.widget.Toast
 import com.vishal.kotlinmvvm.util.showLoadingDialog
 import dagger.android.AndroidInjection
 import android.view.inputmethod.InputMethodManager
+import com.vishal.kotlinmvvm.R
 import com.vishal.kotlinmvvm.util.isNetworkConnected
+import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.toolbar.*
 
 
 open class BaseActivity : AppCompatActivity() {
@@ -60,5 +65,25 @@ open class BaseActivity : AppCompatActivity() {
         return isNetworkConnected(applicationContext)
     }
 
+    fun initialiseToolBar(title: String, isBack: Boolean) {
+        setSupportActionBar(toolbar);
+        getSupportActionBar()!!.setTitle("");
+        toolbar_title.setText(title)
+
+        if (title.equals("Home")) {
+
+        } else {
+            if (isBack) {
+                getSupportActionBar()!!.setDisplayHomeAsUpEnabled(true);
+                getSupportActionBar()!!.setHomeButtonEnabled(true);
+
+                toolbar.setNavigationOnClickListener(object : View.OnClickListener {
+                    override fun onClick(v: View) {
+                        onBackPressed() // Implemented by activity
+                    }
+                })
+            }
+        }
+    }
 
 }
