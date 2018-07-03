@@ -13,6 +13,11 @@ This code is a boilerplate code using kotlin langauge with various libraries lik
 
 - Check session manager class for all shared prefrence code
 
+### Data Binding
+
+- Check login Activity, Login ViewModel & Login XML for data binding.
+
+
 ### Api call using Retrofit
 
 - Check loginactivity for api call
