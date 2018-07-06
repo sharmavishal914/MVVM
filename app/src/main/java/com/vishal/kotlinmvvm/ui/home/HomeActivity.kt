@@ -6,7 +6,6 @@ import com.vishal.chat.ui.home.home.HomeFragment
 import com.vishal.kotlinmvvm.R
 import com.vishal.kotlinmvvm.data.model.Model
 import com.vishal.kotlinmvvm.ui.login.BaseActivity
-import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
 
 class HomeActivity : BaseActivity(), HomeNavigator {
@@ -39,7 +38,7 @@ class HomeActivity : BaseActivity(), HomeNavigator {
 
     override fun openHomeScreen(model: Model) {
         hideLoading()
-        showSnackBar(constraint_root, model.ip)
+//        showSnackBar(constraint_root, model.ip)
     }
 
 }

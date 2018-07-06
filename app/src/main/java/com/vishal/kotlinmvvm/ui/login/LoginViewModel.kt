@@ -7,26 +7,22 @@ import com.vishal.kotlinmvvm.data.remote.RequestInterface
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import android.arch.lifecycle.MutableLiveData
-import android.databinding.*
-import android.databinding.PropertyChangeRegistry
-import com.vishal.kotlinmvvm.BR
-import kotlin.properties.Delegates
+import android.text.TextUtils
+import com.vishal.kotlinmvvm.util.emailValidator
 
 
-class LoginViewModel(var sessionManager: SessionManager, var requestInterface: RequestInterface) : ViewModel(), Observable {
-    private val registry = PropertyChangeRegistry()
+class LoginViewModel(var sessionManager: SessionManager, var requestInterface: RequestInterface) : ViewModel() {
+    var loginNavigator: LoginNavigator? = null
+    var isLoading_live = MutableLiveData<Boolean>()
+    var email = MutableLiveData<String>()
+    var password = MutableLiveData<String>()
 
-    @get:Bindable
-    var email: String by Delegates.observable("") { prop, old, new ->
-        registry.notifyChange(this, BR.email)
-    }
-
-    @get:Bindable
-    var password: String by Delegates.observable("") { prop, old, new ->
-        registry.notifyChange(this, BR.password)
+    fun onLoginClick() {
+        loginNavigator!!.onLoginClick()
     }
 
     fun callApi() {
+        isLoading_live.value = true
         requestInterface.getServiceIP()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -34,19 +30,25 @@ class LoginViewModel(var sessionManager: SessionManager, var requestInterface: R
     }
 
     private fun handleResponse(model: Model) {
-
+        isLoading_live.value = false
+        loginNavigator!!.onLoginResponse(true, "")
     }
 
     private fun handleError(error: Throwable) {
         error.printStackTrace()
+        isLoading_live.value = false
     }
 
-
-    override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback) {
-        registry.add(callback)
-    }
-
-    override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback) {
-        registry.remove(callback)
+    fun isValidData(): String {
+        if (TextUtils.isEmpty(email.value)) {
+            return "Please enter email address"
+        }
+        if (!emailValidator(email.value!!)) {
+            return "Enter valid email address"
+        }
+        if (TextUtils.isEmpty(password.value)) {
+            return "Please enter password"
+        }
+        return ""
     }
 }

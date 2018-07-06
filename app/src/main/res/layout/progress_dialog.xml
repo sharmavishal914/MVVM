@@ -18,12 +18,12 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@android:color/transparent">
+    android:background="#B3ffffff">
 
     <ProgressBar
-        android:id="@+id/pb_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:progressDrawable="@color/progressBarColor" />
+        android:layout_centerInParent="true" />
+
+
 </RelativeLayout>

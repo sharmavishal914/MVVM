@@ -6,6 +6,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="loginViewModel"
             type="com.vishal.kotlinmvvm.ui.login.LoginViewModel" />
@@ -17,18 +19,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <include layout="@layout/toolbar" />
+
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
             android:fillViewport="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="?attr/actionBarSize"
                 android:orientation="vertical">
 
-                <include layout="@layout/toolbar" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -36,7 +41,6 @@
                     android:layout_marginBottom="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="?attr/actionBarSize"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:paddingLeft="20dp"
@@ -61,13 +65,14 @@
                         android:layout_marginTop="20dp">
 
                         <EditText
-                            android:id="@+id/edit_username"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:ems="10"
                             android:hint="Email Address"
                             android:inputType="textEmailAddress"
-                            android:text="@={loginViewModel.email}" />
+                            android:setSelection="@{loginViewModel.email}"
+                            android:text="@={loginViewModel.email}"
+                            android:textSize="@dimen/edittext_size" />
 
                     </android.support.design.widget.TextInputLayout>
 
@@ -76,20 +81,19 @@
                         android:layout_height="wrap_content">
 
                         <EditText
-                            android:id="@+id/edit_password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:ems="10"
                             android:hint="Password"
                             android:inputType="textPassword"
-                            android:text="@={loginViewModel.password}" />
+                            android:text="@={loginViewModel.password}"
+                            android:textSize="@dimen/edittext_size" />
 
                     </android.support.design.widget.TextInputLayout>
 
 
                     <TextView
-                        android:id="@+id/txt_forgotpassword"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
@@ -100,11 +104,11 @@
 
 
                     <Button
-                        android:id="@+id/btn_login"
+                        style="@style/Base.Widget.AppCompat.Button.Colored"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:onClick="onClick"
+                        android:onClick="@{() ->loginViewModel.onLoginClick()}"
                         android:text="SIGN IN" />
 
                     <TextView
@@ -123,11 +127,12 @@
 
 
         <RelativeLayout
-            android:id="@+id/relative_progress"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:background="#B3ffffff"
-            android:visibility="gone">
+            android:clickable="true"
+            android:visibility="@{loginViewModel.isLoading_live ? View.VISIBLE : View.GONE}">
 
             <ProgressBar
                 android:layout_width="wrap_content"
@@ -135,6 +140,7 @@
                 android:layout_centerInParent="true" />
 
         </RelativeLayout>
+
     </android.support.constraint.ConstraintLayout>
 
 </layout>
