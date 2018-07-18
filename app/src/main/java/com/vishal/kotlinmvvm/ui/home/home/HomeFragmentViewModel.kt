@@ -14,15 +14,4 @@ class HomeFragmentViewModel(sessionManager: SessionManager, requestInterface: Re
     }
 
     var name: String = "abc"
-
-//    // Create a LiveData with a String
-//    private var mCurrentName: MutableLiveData<String>? = null
-//
-//    fun getCurrentName(): MutableLiveData<String> {
-//        if (mCurrentName == null) {
-//            mCurrentName = MutableLiveData()
-//        }
-//        return mCurrentName as MutableLiveData<String>
-//    }
-
 }

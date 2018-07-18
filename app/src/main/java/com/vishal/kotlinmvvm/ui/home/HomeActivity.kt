@@ -1,28 +1,35 @@
 package com.vishal.kotlinmvvm.ui.home
 
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.vishal.chat.ui.home.home.HomeFragment
 import com.vishal.kotlinmvvm.R
 import com.vishal.kotlinmvvm.data.model.Model
 import com.vishal.kotlinmvvm.ui.login.BaseActivity
+import com.vishal.kotlinmvvm.ui.login.LoginViewModel
 import javax.inject.Inject
 
 class HomeActivity : BaseActivity(), HomeNavigator {
 
     @Inject
+    lateinit var homeViewModelFactory: HomeViewModelFactory
     lateinit var mHomeViewModel: HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        mHomeViewModel.mNavigator = this
 
-//        callApi()
+        initialise()
 
         if (savedInstanceState == null) {
             homeFragement()
         }
+    }
+
+    private fun initialise() {
+        mHomeViewModel = ViewModelProviders.of(this, homeViewModelFactory).get(HomeViewModel::class.java!!)
+        mHomeViewModel.mNavigator = this
     }
 
     private fun homeFragement() {

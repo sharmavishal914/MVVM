@@ -5,20 +5,11 @@ import android.databinding.InverseBindingMethod
 import android.databinding.InverseBindingMethods
 import android.widget.EditText
 
-@InverseBindingMethods(
-        InverseBindingMethod(
-                type = EditTextBinder::class,
-                attribute = "android:setSelection",
-                method = "setSelection"
-        )
-)
-class EditTextBinder {
-    companion object {
-        @JvmStatic
-        @BindingAdapter("android:setSelection")
-        fun setSelection(editText: EditText, string: String) {
-            editText.setText(string)
-            editText.setSelection(string.length)
-        }
+@BindingAdapter("android:setSelection")
+fun setSelectionEditText(editText: EditText, oldvalue: String?, newvalue: String?) {
+    if (oldvalue == null) {
+        editText.setText(newvalue)
+        editText.setSelection(newvalue!!.length)
     }
+
 }
