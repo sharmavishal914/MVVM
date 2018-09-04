@@ -26,3 +26,12 @@ fun ImageView.setVisible(b: Boolean) {
 fun TextView.setTextAutoCapital(value: String) {
     this.setText(value.substring(0, 1).toUpperCase() + value.substring(1))
 }
+
+
+fun String?.emptyStringIfNull(): String {
+    if (this == null) {
+        return ""
+    } else {
+        return this
+    }
+}

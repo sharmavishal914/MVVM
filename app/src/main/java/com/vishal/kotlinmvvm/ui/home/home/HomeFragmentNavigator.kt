@@ -1,6 +1,4 @@
-package com.vishal.chat.ui.home.home
-
-
+package com.vishal.kotlinmvvm.ui.home.home
 
 interface HomeFragmentNavigator {
 

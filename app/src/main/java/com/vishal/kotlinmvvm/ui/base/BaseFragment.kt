@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.widget.Toast
-import com.vishal.kotlinmvvm.ui.login.BaseActivity
 import dagger.android.support.AndroidSupportInjection
 
 
@@ -22,21 +21,25 @@ open class BaseFragment : Fragment() {
 
     override fun onAttach(context: Context?) {
         if (context is BaseActivity) {
-            mActivity = context as BaseActivity
+            mActivity = context
         }
         super.onAttach(context)
     }
 
     fun isNetworkConnected(): Boolean {
-        return mActivity != null && mActivity.isNetworkConnected()
+        return  mActivity.isNetworkConnected()
     }
 
     fun hideKeyboard() {
-        if (mActivity != null) mActivity.hideKeyboard()
+         mActivity.hideKeyboard()
     }
 
     fun showToast(string: String) {
-        if (mActivity != null) mActivity.showToast(string)
+        mActivity.showToast(string)
     }
 
+    fun updateToolbarHeading(string: String) {
+         mActivity.updateToolbarHeading(string)
+    }
+    
 }

@@ -1,11 +1,12 @@
 package com.vishal.kotlinmvvm.ui.splash
 
 import android.os.Bundle
-import com.vishal.kotlinmvvm.ui.login.BaseActivity
 import android.content.Intent
 import android.os.Handler
+import com.vishal.kotlinmvvm.ui.base.BaseActivity
 import com.vishal.kotlinmvvm.ui.login.LoginActivity
-
+import dagger.android.AndroidInjection
+import javax.inject.Inject
 
 class SplashActivity : BaseActivity() {
 
@@ -13,6 +14,7 @@ class SplashActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         nextScreen()
     }
+
 
     private fun nextScreen() {
         Handler().postDelayed({

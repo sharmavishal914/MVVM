@@ -1,6 +1,8 @@
 package com.vishal.kotlinmvvm
 
 import android.app.Activity
+import android.content.Context
+import android.support.multidex.MultiDex
 import android.support.multidex.MultiDexApplication
 import android.support.v4.app.Fragment
 import com.vishal.kotlinmvvm.di.component.DaggerAppComponent
@@ -11,11 +13,7 @@ import dagger.android.HasFragmentInjector
 import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
-/**
- * Created by Administrator on 12/4/2017.
- */
 class AppController : MultiDexApplication(), HasActivityInjector, HasSupportFragmentInjector {
-
 
     @Inject
     lateinit var activityInjector: DispatchingAndroidInjector<Activity>
@@ -36,4 +34,10 @@ class AppController : MultiDexApplication(), HasActivityInjector, HasSupportFrag
         DaggerAppComponent.builder().application(this).build().inject(this)
         super.onCreate()
     }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
+    }
+
 }

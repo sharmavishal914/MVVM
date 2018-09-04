@@ -11,4 +11,21 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="forgot_password">Forgot Password</string>
 
+    <!-- Validation text -->
+    <string name="validation_email">Please enter email address</string>
+    <string name="validation_email_address">Please enter valid email address</string>
+    <string name="validation_password">Please enter password</string>
+    <string name="validation_old_password">Please enter old password</string>
+    <string name="validation_new_password">Please enter new password</string>
+    <string name="validation_password_length">Password must be of atleast 6 digits</string>
+    <string name="validation_password_confirm">Please enter confirm password</string>
+    <string name="validation_password_match">Password and confirm password not matched</string>
+    <string name="validation_first_name">Please enter first name</string>
+    <string name="validation_last_name">Please enter last name</string>
+    <string name="validation_company">Please enter company name</string>
+    <string name="validation_internet_connection">No internet connection</string>
+
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
 </resources>

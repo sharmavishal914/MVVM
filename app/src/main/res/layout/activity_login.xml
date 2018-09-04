@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
         <import type="android.view.View" />
 
         <variable
-            name="loginViewModel"
+            name="viewModel"
             type="com.vishal.kotlinmvvm.ui.login.LoginViewModel" />
+
+        <variable
+            name="navigator"
+            type="com.vishal.kotlinmvvm.ui.login.LoginNavigator" />
 
     </data>
 
@@ -70,9 +73,9 @@
                             android:ems="10"
                             android:hint="Email Address"
                             android:inputType="textEmailAddress"
-                            android:setSelection="@{loginViewModel.email}"
-                            android:text="@={loginViewModel.email}"
-                            android:textSize="@dimen/edittext_size" />
+                            android:setSelection="@{viewModel.email}"
+                            android:text="@={viewModel.email}"
+                            android:textSize="@dimen/edit_text_size" />
 
                     </android.support.design.widget.TextInputLayout>
 
@@ -87,8 +90,8 @@
                             android:ems="10"
                             android:hint="Password"
                             android:inputType="textPassword"
-                            android:text="@={loginViewModel.password}"
-                            android:textSize="@dimen/edittext_size" />
+                            android:text="@={viewModel.password}"
+                            android:textSize="@dimen/edit_text_size" />
 
                     </android.support.design.widget.TextInputLayout>
 
@@ -97,18 +100,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:onClick="onClick"
+                        android:onClick="@{() -> navigator.onForgotClick()}"
                         android:padding="5dp"
                         android:text="@string/forgot_password"
                         android:textStyle="bold" />
-
 
                     <Button
                         style="@style/Base.Widget.AppCompat.Button.Colored"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:onClick="@{() ->loginViewModel.onLoginClick()}"
+                        android:onClick="@{() ->navigator.onLoginClick()}"
                         android:text="SIGN IN" />
 
                     <TextView
@@ -117,9 +119,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
-                        android:onClick="onClick"
+                        android:onClick="@{() ->navigator.onSignUpClick()}"
                         android:padding="5dp" />
-
 
                 </LinearLayout>
             </LinearLayout>
@@ -132,7 +133,7 @@
             android:layout_gravity="center"
             android:background="#B3ffffff"
             android:clickable="true"
-            android:visibility="@{loginViewModel.isLoading_live ? View.VISIBLE : View.GONE}">
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}">
 
             <ProgressBar
                 android:layout_width="wrap_content"

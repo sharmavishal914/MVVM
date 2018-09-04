@@ -2,9 +2,6 @@ package com.vishal.kotlinmvvm.data.local
 
 import android.content.SharedPreferences
 
-/**
- * Created by Administrator on 1/22/2018.
- */
 class SessionManager(var mSharedPreferences: SharedPreferences) {
 
     fun setValue(key: String, value: Any?) {

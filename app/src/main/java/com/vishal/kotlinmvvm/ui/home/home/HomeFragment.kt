@@ -1,68 +1,41 @@
-package com.vishal.chat.ui.home.home
+package com.vishal.kotlinmvvm.ui.home.home
 
 
-import android.arch.lifecycle.Observer
-import android.content.Intent
+import android.arch.lifecycle.ViewModelProviders
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.vishal.kotlinmvvm.R
-import com.vishal.kotlinmvvm.ui.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
-import android.arch.lifecycle.ViewModelProviders
+import com.vishal.kotlinmvvm.R
+import com.vishal.kotlinmvvm.databinding.FragmentHomeBinding
+import com.vishal.kotlinmvvm.ui.base.BaseFragment
 
 
 class HomeFragment : BaseFragment(), View.OnClickListener, HomeFragmentNavigator {
 
     @Inject
-    lateinit var homeFragmentViewModel: HomeFragmentViewModel
+    lateinit var homeFragmentViewModelFactory: HomeFragmentViewModelFactory
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        homeFragmentViewModel.mNavigator = this
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    lateinit var viewModel: HomeFragmentViewModel
+    lateinit var binding: FragmentHomeBinding
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        initilise(inflater, container)
+
+        return binding.root
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        callingViewModelFunction()
-        liveData()
-        textView.setText(homeFragmentViewModel.name)
-    }
-
-    override fun onResume() {
-        if (isNetworkConnected()) {
-            showToast("Internet connected")
-        }
-
-        super.onResume()
+    private fun initilise(inflater: LayoutInflater, container: ViewGroup?) {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        viewModel = ViewModelProviders.of(this, homeFragmentViewModelFactory).get(HomeFragmentViewModel::class.java)
+        binding.viewModel = viewModel
+        viewModel.mNavigator = this
     }
 
     override fun onClick(p: View?) {
         when (p!!.id) {
-            R.id.button_click -> {
-                val anotherName = "John Doe"
-//                homeFragmentViewModel.getCurrentName().setValue(anotherName)
-                homeFragmentViewModel.name = anotherName
-                textView.setText(homeFragmentViewModel.name)
-            }
         }
     }
-
-    private fun liveData() {
-//        val nameObserver = object : Observer<String> {
-//            override fun onChanged(t: String?) {
-////                textView.setText(t)
-//            }
-//        }
-//        homeFragmentViewModel.getCurrentName().observe(this, nameObserver)
-        button_click.setOnClickListener(this)
-    }
-
-    private fun callingViewModelFunction() {
-        homeFragmentViewModel.test()
-    }
-
 }

@@ -1,17 +1,17 @@
 package com.vishal.kotlinmvvm.di.builder
 
-import com.vishal.chat.ui.home.home.HomeFragment
-import com.vishal.chat.ui.home.home.HomeFragmentModule
+
+import com.vishal.kotlinmvvm.ui.forgot.ForgotActivity
 import com.vishal.kotlinmvvm.ui.home.HomeActivity
-import com.vishal.kotlinmvvm.ui.home.HomeViewModelFactory
+import com.vishal.kotlinmvvm.ui.home.home.HomeFragment
+import com.vishal.kotlinmvvm.ui.home.list.ListFragment
 import com.vishal.kotlinmvvm.ui.login.LoginActivity
+import com.vishal.kotlinmvvm.ui.signup.SignUpActivity
 import com.vishal.kotlinmvvm.ui.splash.SplashActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
-/**
- * Created by Administrator on 1/15/2018.
- */
+
 @Module
 
 abstract class ActivityBuilder {
@@ -22,9 +22,19 @@ abstract class ActivityBuilder {
     internal abstract fun bindLoginActivity(): LoginActivity
 
     @ContributesAndroidInjector(modules = arrayOf())
+    internal abstract fun bindForgotActivity(): ForgotActivity
+
+    @ContributesAndroidInjector(modules = arrayOf())
+    internal abstract fun bindSignUpActivity(): SignUpActivity
+
+    @ContributesAndroidInjector(modules = arrayOf())
     internal abstract fun bindHomeActivity(): HomeActivity
 
-    @ContributesAndroidInjector(modules = arrayOf(HomeFragmentModule::class))
+    @ContributesAndroidInjector(modules = arrayOf())
     internal abstract fun bindHomeFragment(): HomeFragment
+
+    @ContributesAndroidInjector(modules = arrayOf())
+    internal abstract fun bindListFragment(): ListFragment
+
 
 }

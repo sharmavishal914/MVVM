@@ -26,6 +26,8 @@
             android:name=".ui.login.LoginActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".ui.home.HomeActivity" />
+        <activity android:name=".ui.forgot.ForgotActivity" />
+        <activity android:name=".ui.signup.SignUpActivity"/>
     </application>
 
 </manifest>

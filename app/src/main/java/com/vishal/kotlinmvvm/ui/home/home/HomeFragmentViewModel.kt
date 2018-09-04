@@ -1,17 +1,9 @@
-package com.vishal.chat.ui.home.home
+package com.vishal.kotlinmvvm.ui.home.home
 
 
 import com.vishal.kotlinmvvm.data.local.SessionManager
 import com.vishal.kotlinmvvm.data.remote.RequestInterface
-import com.vishal.kotlinmvvm.ui.login.BaseViewModel
-import android.arch.lifecycle.MutableLiveData
+import com.vishal.kotlinmvvm.ui.base.BaseViewModel
 
 
-class HomeFragmentViewModel(sessionManager: SessionManager, requestInterface: RequestInterface) : BaseViewModel<HomeFragmentNavigator>(sessionManager, requestInterface) {
-
-    fun test() {
-        print("Hello")
-    }
-
-    var name: String = "abc"
-}
+class HomeFragmentViewModel(sessionManager: SessionManager, requestInterface: RequestInterface) : BaseViewModel<HomeFragmentNavigator>(sessionManager, requestInterface)

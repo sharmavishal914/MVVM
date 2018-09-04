@@ -7,10 +7,6 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-/**
- * Created by Administrator on 1/15/2018.
- */
-
 @Module
 class AppModule {
     @Provides
@@ -21,6 +17,6 @@ class AppModule {
     @Provides
     @Singleton
     fun provideSessionManagerModule(context: Context): SessionManager {
-        return SessionManager(context!!.getSharedPreferences("SharedPref", Context.MODE_PRIVATE))
+        return SessionManager(context.getSharedPreferences("SharedPref", Context.MODE_PRIVATE))
     }
 }

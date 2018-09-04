@@ -1,21 +1,24 @@
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/textView"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.vishal.kotlinmvvm.ui.home.home.HomeFragmentViewModel" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Fragment" />
 
 
-    <Button
-        android:id="@+id/button_click"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    </android.support.design.widget.CoordinatorLayout>
 
+</layout>
 
-</android.support.design.widget.CoordinatorLayout>

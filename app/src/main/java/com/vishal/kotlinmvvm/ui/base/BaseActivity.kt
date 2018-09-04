@@ -1,25 +1,19 @@
-package com.vishal.kotlinmvvm.ui.login
+package com.vishal.kotlinmvvm.ui.base
 
-import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
 import android.view.View
 import android.widget.Toast
-import com.vishal.kotlinmvvm.util.showLoadingDialog
 import dagger.android.AndroidInjection
 import android.view.inputmethod.InputMethodManager
-import com.vishal.kotlinmvvm.R
 import com.vishal.kotlinmvvm.util.isNetworkConnected
-import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 
 open class BaseActivity : AppCompatActivity() {
-    private var mProgressDialog: ProgressDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,17 +22,6 @@ open class BaseActivity : AppCompatActivity() {
 
     fun performDependencyInjection() {
         AndroidInjection.inject(this)
-    }
-
-    fun hideLoading() {
-        if (mProgressDialog != null && mProgressDialog!!.isShowing()) {
-            mProgressDialog!!.cancel()
-        }
-    }
-
-    fun showLoading() {
-        hideLoading()
-        mProgressDialog = showLoadingDialog(this)
     }
 
 
@@ -55,9 +38,7 @@ open class BaseActivity : AppCompatActivity() {
         val view = this.currentFocus
         if (view != null) {
             val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            if (imm != null) {
-                imm!!.hideSoftInputFromWindow(view.windowToken, 0)
-            }
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
         }
     }
 
@@ -70,7 +51,7 @@ open class BaseActivity : AppCompatActivity() {
         getSupportActionBar()!!.setTitle("");
         toolbar_title.setText(title)
 
-        if (title.equals("Home")) {
+        if (title.equals("HomeFragment")) {
 
         } else {
             if (isBack) {
@@ -84,6 +65,10 @@ open class BaseActivity : AppCompatActivity() {
                 })
             }
         }
+    }
+
+    fun updateToolbarHeading(title: String) {
+        toolbar_title.setText(title)
     }
 
 }
