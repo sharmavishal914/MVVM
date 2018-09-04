@@ -16,7 +16,7 @@ This code is a boilerplate code using kotlin langauge with various libraries lik
 ### Data Binding
 
 - Check login Activity, Login ViewModel & Login XML for data binding.
-
+- For binder for data binding check utils/binder package
 
 ### Api call using Retrofit
 
@@ -26,6 +26,19 @@ This code is a boilerplate code using kotlin langauge with various libraries lik
 ### Home Fragment Screen
 
 - Home Fragment Screen is an example to add a fragment in mvvm with dagger
+
+### List Fragment Screen
+
+- List Fragment Screen is an example to add a recycler view using data binding. For image load binder is added with glide.
+
+### Progress Bar
+
+- In each xml progress bar layout is added. Which is managed on the basis of a variable using data binding.
+
+
+
+
+
 
 
 
