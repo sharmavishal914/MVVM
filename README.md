@@ -35,8 +35,17 @@ This code is a boilerplate code using kotlin langauge with various libraries lik
 
 - In each xml progress bar layout is added. Which is managed on the basis of a variable using data binding.
 
+### Image loading from url
 
+- For image loading from url glide library is used, you can check the ImageViewBinder class in utils/binder package for same. Image loading is done through xml using data binding, for xml check the row_user xml .
 
+       <ImageView
+        android:id="@+id/restaurantImageView"
+        loadImage="@{user.image}"
+        place="@{@drawable/ic_launcher_foreground}"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop" />
 
 
 

@@ -14,6 +14,7 @@ import android.widget.TextView
 import com.emailValidator
 
 import com.vishal.kotlinmvvm.R
+import com.vishal.kotlinmvvm.data.local.SessionManager
 import com.vishal.kotlinmvvm.databinding.ActivityLoginBinding
 import com.vishal.kotlinmvvm.ui.base.BaseActivity
 import com.vishal.kotlinmvvm.ui.forgot.ForgotActivity
@@ -30,6 +31,9 @@ class LoginActivity : BaseActivity(), LoginNavigator {
     lateinit var loginViewModelFactory: LoginViewModelFactory
     lateinit var viewModel: LoginViewModel
     lateinit var activityLoginBinding: ActivityLoginBinding
+
+    @Inject
+    lateinit var sessionManager: SessionManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
